@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# [ExApp Shopify App](https://exapp.josbach.dev)
+
+A App using NextJS + React
