@@ -1,10 +1,12 @@
 require("isomorphic-fetch");
 const dotenv = require("dotenv");
 const Koa = require("koa");
+const KoaRouter = require("koa-router");
 const next = require("next");
 const { default: createShopifyAuth } = require("@shopify/koa-shopify-auth");
 const { verifyRequest } = require("@shopify/koa-shopify-auth");
 const session = require("koa-session");
+const Router = require("koa-router");
 
 dotenv.config();
 
@@ -17,9 +19,11 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 
 app.prepare().then(() => {
   const server = new Koa();
-  server.use(session({ secure: true, sameSite: "none" }, server));
   server.keys = [SHOPIFY_API_SECRET_KEY];
 
+  const router = new Router();
+
+  router.use(session({ secure: true, sameSite: "none" }, server));
   server.use(
     createShopifyAuth({
       apiKey: SHOPIFY_API_KEY,
@@ -27,12 +31,14 @@ app.prepare().then(() => {
       scopes: ["read_products"],
       afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
-        ctx.redirect("/");
+        ctx.redirect("/shopify/anotated-layout");
       },
     })
   );
 
-  server.use(verifyRequest());
+  router.prefix("/shopify").use(verifyRequest());
+
+  server.use(router.routes()).use(router.allowedMethods());
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
