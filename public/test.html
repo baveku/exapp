@@ -1,9 +1,35 @@
 <html>
-  <head> </head>
+  <head>
+    <!-- "https://unpkg.com/react@16/umd/react.development.js",
+    "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+    "https://unpkg.com/babel-standalone@6/babel.min.js", -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/babel-standalone@6/babel.min.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/regenerator-runtime@0.13.1/runtime.js"></script>
+  </head>
   <body>
     <div id="price">
       <p id="__PRICE__">1900 $</p>
     </div>
-    <script src="scripter.js"></script>
+    <script type="module" src="./currencyapp.js"></script>
   </body>
 </html>
