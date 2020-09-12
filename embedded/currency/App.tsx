@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { getExchangeRates } from './api';
+interface AppProps {
+    currentPrice: number;
+}
 
-function App() {
-    let [currency, setCurrency] = useState('300$');
+function App(props: AppProps) {
+    let [currency, setCurrency] = useState(props.currentPrice);
+    let [locate, setLocate] = useState('');
 
     useEffect(() => {
-        setTimeout(() => {
-            setCurrency('5000$');
-        }, 3000);
+        getExchangeRates('USD').then((rates) => {
+            setCurrency(currency * rates.AUD);
+        });
     }, []);
 
     return (
         <div>
-            <p>{currency}</p>
+            <p>
+                {currency.toLocaleString('de-DE', {
+                    style: 'currency',
+                    currency: 'EUR',
+                })}
+            </p>
             <p></p>
         </div>
     );
