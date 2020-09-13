@@ -9,7 +9,7 @@ function App(props: AppProps) {
     let [locate, setLocate] = useState('');
 
     useEffect(() => {
-        getExchangeRates('USD').then((rates) => {
+        getExchangeRates().then((rates: any) => {
             setCurrency(currency * rates.AUD);
         });
     }, []);
