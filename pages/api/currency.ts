@@ -24,7 +24,7 @@ let currencyToLocale = {
 
 export const getExchangeRates = async () => {
     let { data }: { data: ExchangeRatesResponse } = await axios.get(
-        `https://api.exchangeratesapi.io/latest?base=EUR&symbols=USD,GBP,AUD`
+        `https://api.exchangeratesapi.io/latest?base=USD&symbols=GBP,AUD`
     );
     console.log(data.rates);
     return data.rates;
