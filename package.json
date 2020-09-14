@@ -6,7 +6,6 @@
     "scripts": {
         "dev": "node server.js && next watch",
         "build": "next build && next export",
-        "embedded-watch": "cd ./embedded/currency; webpack --config webpack.config.js",
         "start": "NODE_ENV=production node server.js"
     },
     "dependencies": {

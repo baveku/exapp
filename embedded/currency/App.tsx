@@ -10,6 +10,7 @@ function App(props: AppProps) {
 
     useEffect(() => {
         getExchangeRates().then((rates: any) => {
+            console.log(rates);
             setCurrency(currency * rates.AUD);
         });
     }, []);
