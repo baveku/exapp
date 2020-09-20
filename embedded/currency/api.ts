@@ -1,5 +1,5 @@
 import axios from 'axios';
-let domain = 'http://localhost:3000/api/currency';
+let domain = 'https://exapp.josbach.dev/api/currency';
 export const getExchangeRates = async () => {
     let { data } = await axios.get(domain);
     return data;
